@@ -1,0 +1,11 @@
+[package]
+name = "pyext-example"
+version = "0.1.0"
+authors = ["jtk"]
+
+[lib]
+name = "example"
+crate-type = ["dylib"]
+
+[dependencies]
+cpython = "0.2.0"
