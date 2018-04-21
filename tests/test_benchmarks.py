@@ -1,20 +1,32 @@
+import pytest
+
 import time
 
-
-def something(duration = .01):
-    """
-    Function that needs some serious benchmarking.
-    """
-    time.sleep(duration)
-    # You may return anything you want, like the result of a computation
-    return 123
+from test import py_fizz_buzz_sum, numpy_fizz_buzz_sum, py_count_doubles, random_str
+from example import fizz_buzz_sum, count_doubles
 
 
-def test_my_stuff(benchmark):
-    # benchmark something
-    result = benchmark(something)
+@pytest.mark.parametrize(
+    'fn',
+    (
+        py_fizz_buzz_sum,
+        numpy_fizz_buzz_sum,
+        fizz_buzz_sum,
+    )
+)
+def test_fizz_buzz_sum(benchmark, fn):
+    result = benchmark(fn, 1000)
 
-    # Extra code, to verify that the run completed correctly.
-    # Sometimes you may want to check the result, fast functions
-    # are no good if they return incorrect results :-)
-    assert result == 123
+    assert result == 233168
+
+
+@pytest.mark.parametrize(
+    'fn',
+    (
+        py_count_doubles,
+        count_doubles
+    )
+)
+def test_count_doubles(benchmark, fn):
+    str = random_str(1000)
+    result = benchmark(fn, str)
