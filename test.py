@@ -2,6 +2,7 @@ import example
 import numpy as np
 import random
 import string
+import math
 
 # print(example.__dict__.items())
 for k, v in example.__dict__.items():
@@ -39,3 +40,30 @@ def numpy_fizz_buzz_sum(limit):
 print(example.fizz_buzz_sum(1000))
 print(py_fizz_buzz_sum(1000))
 print(numpy_fizz_buzz_sum(1000))
+
+
+def py_prime_factorization(n):
+    factors = []
+    n_sqrt = math.sqrt(n)
+
+    while n % 2 == 0:
+        factors.append(2)
+        n /= 2
+
+    divisor = 3
+    while n > 1:
+        if n % divisor == 0:
+            factors.append(divisor)
+            n /= divisor
+        elif divisor > n_sqrt:
+            factors.append(n)
+            break
+        else:
+            divisor += 2
+    return factors
+
+
+n = 17
+# n = 1231564617245714
+print(py_prime_factorization(n))
+print(example.prime_factorization(n))
