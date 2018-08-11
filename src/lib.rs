@@ -3,7 +3,7 @@ extern crate cpython;
 
 use cpython::{Python, PyResult};
 
-fn count_doubles(_py: Python, val: &str) -> PyResult<u64> {
+pub fn count_doubles(_py: Python, val: &str) -> PyResult<u64> {
     let mut total = 0;
 
     for (c1, c2) in val.chars().zip(val.chars().skip(1)) {
@@ -15,7 +15,7 @@ fn count_doubles(_py: Python, val: &str) -> PyResult<u64> {
     Ok(total)
 }
 
-fn fizz_buzz_sum(_py: Python, limit: u64) -> PyResult<u64> {
+pub fn fizz_buzz_sum(_py: Python, limit: u64) -> PyResult<u64> {
     Ok((1..limit)
         .filter(|x| x % 3 == 0 || x % 5 == 0)
         .sum())
@@ -47,6 +47,7 @@ pub fn prime_factorization(_py: Python, mut n: u64) -> PyResult<Vec<u64>> {
     Ok(factors)
 }
 
+// tell cpython what to export
 py_module_initializer!(example, initexample, PyInit_example, |py, m| {
     m.add(py, "count_doubles", py_fn!(py, count_doubles(val: &str)))?;
     m.add(py, "fizz_buzz_sum", py_fn!(py, fizz_buzz_sum(limit: u64)))?;

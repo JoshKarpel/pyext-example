@@ -2,7 +2,7 @@ import pytest
 
 import time
 
-from test import py_fizz_buzz_sum, numpy_fizz_buzz_sum, py_count_doubles, py_prime_factorization, random_str
+from py_funcs import py_fizz_buzz_sum, numpy_fizz_buzz_sum, py_count_doubles, py_prime_factorization, random_str
 from example import fizz_buzz_sum, count_doubles, prime_factorization
 
 

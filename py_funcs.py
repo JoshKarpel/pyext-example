@@ -1,13 +1,8 @@
-import example
-import numpy as np
 import random
 import string
 import math
 
-# print(example.__dict__.items())
-for k, v in example.__dict__.items():
-    print(k, '-->', v)
-print()
+import numpy as np
 
 
 def py_count_doubles(str):
@@ -19,13 +14,8 @@ def py_count_doubles(str):
     return count
 
 
-def random_str(length = 100):
+def random_str(length):
     return ''.join(random.choices(string.ascii_lowercase, k = length))
-
-
-str = random_str(1000)
-print(example.count_doubles(str))
-print(py_count_doubles(str))
 
 
 def py_fizz_buzz_sum(limit):
@@ -35,11 +25,6 @@ def py_fizz_buzz_sum(limit):
 def numpy_fizz_buzz_sum(limit):
     x = np.arange(1, limit, 1)
     return np.sum(np.where((x % 3 == 0) + (x % 5 == 0), x, 0))
-
-
-print(example.fizz_buzz_sum(1000))
-print(py_fizz_buzz_sum(1000))
-print(numpy_fizz_buzz_sum(1000))
 
 
 def py_prime_factorization(n):
@@ -61,9 +46,3 @@ def py_prime_factorization(n):
         else:
             divisor += 2
     return factors
-
-
-n = 17
-# n = 1231564617245714
-print(py_prime_factorization(n))
-print(example.prime_factorization(n))
